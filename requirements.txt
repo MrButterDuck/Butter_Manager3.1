@@ -28,7 +28,7 @@ pywin32-ctypes==0.2.0
 PyYAML==5.4.1
 qasync==0.13.0
 requests==2.25.1
-scipy==1.6.3
+scipy==1.5.4
 selenium==3.141.0
 six==1.15.0
 soup2dict==1.0.1
