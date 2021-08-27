@@ -15,7 +15,7 @@ ImageHash==4.2.0
 jedi==0.18.0
 keyboard==0.13.5
 lxml==4.6.3
-numpy==1.20.3
+numpy==1.19.5
 parso==0.8.1
 pefile==2019.4.18
 Pillow==8.2.0
