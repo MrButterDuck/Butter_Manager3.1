@@ -1494,8 +1494,6 @@ class post_making_class:
                     links = image_worker.images_for_post(main_word, abjective_word)
                 except Exception as e:
                     time_print.t_print('Got an Error '+str(e), color = 'r')
-                    continue
-                print(links)
                 if links == None:
                     continue
                 vk_photo_ids = []
@@ -1510,7 +1508,6 @@ class post_making_class:
                     vk_unixtime = unix_timestamp + (publish_latency*60)
                 except:
                     vk_unixtime = 0
-                print(vk_photo_ids)
                 post_title = main_word+smiles_for_posts[randint(0, len(smiles_for_posts)-1)]+'\n'+'#'+main_word.replace(' ', '_')+'\n'+post_adding_title
                 if len(vk_photo_ids) > 0:
                     Vk_logic.create_post(token, post_group_id, vk_photo_owner_id, vk_photo_ids, post_title, vk_unixtime)
