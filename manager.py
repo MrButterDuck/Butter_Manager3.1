@@ -424,7 +424,7 @@ class image_worker:
             try:
                 middle_color = image_worker.image_analyzing_color(image_path = path[1])
                 time_print.t_print('Get middle color of {0} picture, its {1}'.format(str(i), middle_color))
-            except Exception es e:
+            except Exception as e:
                 time_print.t_print('Image CV2 Error:'+str(e), color = 'r')
                 continue
             if middle_color != 'Trash': #if this is bad picture, than dont add it to list this others
