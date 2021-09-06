@@ -1575,10 +1575,10 @@ class auto_cycles():
                 auto_cycles.logs_del()
                 last_log_deleting = datetime.datetime.now()
             #==========================SETTINGS SAVING==========================#
-            if datetime.datetime.now() >= last_set_saving + datetime.timedelta(minutes = 20):
-                time_print.t_print('Saving settings', color = 'c')
-                auto_cycles.saving_settings(file_settings, system_variables, group_data)
-                last_log_deleting = datetime.datetime.now()
+            #if datetime.datetime.now() >= last_set_saving + datetime.timedelta(minutes = 20):
+            #   time_print.t_print('Saving settings', color = 'c')
+            #    auto_cycles.saving_settings(file_settings, system_variables, group_data)
+            #    last_log_deleting = datetime.datetime.now()
             #==========================AUTO RESTARTING==========================#
             was_restarting = False
             message_send_worker, life_emit_worker, post_creator_worker = system_variables['message_send_worker'], system_variables['life_emit_worker'], system_variables['post_creator_worker']
@@ -1611,7 +1611,7 @@ class auto_cycles():
                 main_lock.release()
                 was_restarting = True
                 message_sender_online = 0
-            if post_creator_worker and last_post_creator_online and post_creator_online and datetime.datetime.now() >= start_time_post_creator + datetime.timedelta(minutes = 60) and auto_rest_timer == 0: #if last launch was 30 minutes ago, and still 'online', than restart it
+            if post_creator_worker and last_post_creator_online and post_creator_online and datetime.datetime.now() >= start_time_post_creator + datetime.timedelta(minutes = 40) and auto_rest_timer == 0: #if last launch was 30 minutes ago, and still 'online', than restart it
                 time_print.t_print('Restarting "Post Creating" cycle', color = 'c')
                 try:
                     auto_post.join()
@@ -1748,7 +1748,7 @@ class main:
                     system_variables['restart_server'] = 0
                     if not(system_variables['stop_server']):
                         time_print.t_print('Manager restarting', color = 'y')
-                        auto_cycles.saving_settings(file_settings, system_variables, group_data)
+                        #auto_cycles.saving_settings(file_settings, system_variables, group_data)
                     break
                     continue
                 command_class.command_taker(main_token, tokens, password = system_variables['password'])
