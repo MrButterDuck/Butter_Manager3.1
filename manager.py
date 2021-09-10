@@ -1297,6 +1297,7 @@ class life_emit_class:
                     last_launch = datetime.datetime.now()
                     main_lock.acquire()
                     system_variables['last_life_emiting'] = datetime.datetime.now()
+                    auto_cycles.saving_settings(file_settings, system_variables, group_data)
                     main_lock.release()
                     time_print.t_print('Succesful made an life emiting action', color = 'g')
                     main_lock.acquire()
@@ -1447,6 +1448,7 @@ class auto_sending_class:
                 last_launch = datetime.datetime.now()
                 main_lock.acquire()
                 system_variables['last_sending'] = datetime.datetime.now()
+                auto_cycles.saving_settings(file_settings, system_variables, group_data)
                 main_lock.release()
                 if double_sending:
                     main_part = not(main_part)
@@ -1530,10 +1532,11 @@ class post_making_class:
                 post_title = main_word+smiles_for_posts[randint(0, len(smiles_for_posts)-1)]+'\n'+'#'+main_word.replace(' ', '_')+'\n'+post_adding_title
                 if len(vk_photo_ids) > 0:
                     Vk_logic.create_post(token, post_group_id, vk_photo_owner_id, vk_photo_ids, post_title, vk_unixtime)
+                    main_lock.acquire()
                     last_launch = datetime.datetime.now()
                     system_variables['last_post_creating'] = datetime.datetime.now()
+                    auto_cycles.saving_settings(file_settings, system_variables, group_data)
                     time_print.t_print('Succesful created a new post', color = 'g')
-                    main_lock.acquire()
                     system_variables['post_creator_online'] = 0
                     main_lock.release()
                 if len(vk_photo_ids) <= 0:
