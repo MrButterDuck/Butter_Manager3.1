@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup # to parse HTML
 from PIL import Image, UnidentifiedImageError
 from random import randint
 import numpy as np
+import calendar
 
 file_settings = {}
 system_variables = {}
